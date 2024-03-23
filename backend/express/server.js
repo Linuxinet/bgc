@@ -4,6 +4,8 @@ const axios = require('axios');
 const cors = require('cors');
 const serverless = require('serverless-http');
 const path = require('path');
+const bodyParser = require('body-parser')
+
 
 
 const app = express();
@@ -13,14 +15,15 @@ const router = express.Router()
 const GITHUB_REPO_URL = 'https://raw.githubusercontent.com/bugcrowd/templates/master/submissions/description/';
 
 app.use(cors());
+app.use(bodyParser.json())
 
+// Load data.json fileconst dataPath = path.join(process.cwd(), "server/data/nfts.json");
 
-// Load data.json file
-const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json')));
-
+const data = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'data.json')));
+console.log(__dirname);
 // Serve the aliases.json file
 router.get('/aliases', (req, res) => {
-    res.sendFile(path.join(__dirname, 'aliases.json'));
+    res.sendFile(path.resolve(process.cwd(), 'aliases.json'));
 });
 
 
@@ -131,9 +134,8 @@ function findEntryById(id, entries) {
     return null;
 }
 
-
 app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+app.use('/', (req, res) => res.sendFile(path.join(process.cwd(), 'index.html')));
 
 
 module.exports = app;

@@ -3,4 +3,9 @@
   functions = "functions"
 
 [functions]
-    included_files = ["**.json"] 
+    included_files = ["./express/*.json", "./*.json"] 
+    
+[[redirects]]
+  from = "/server/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
