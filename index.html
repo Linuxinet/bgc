@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerabilities</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBGS903MB5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CBGS903MB5');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+
+
+</head>
+
+<body>
+  
+    <ul id="categoryList">
+        <h1>Vulnerabilities</h1>
+        <h4>me -> <a href="https://github.com/Linuxinet" target="_blank" rel="noopener noreferrer">@VinayKumar</a></h4>
+
+        <!-- Categories will be dynamically populated here -->
+    </ul>
+
+    <!-- Back button -->
+    <!-- <button id="backButton">Back</button> -->
+    <br>
+    <br>
+    <br>
+    <br>
+
+   <!-- Disclaimer -->
+   <div class="disclaimer">
+    Data taken from <a href="https://github.com/bugcrowd/templates" target="_blank" rel="noopener noreferrer">https://github.com/bugcrowd/templates</a>
+</div>
+    <!-- Include script.js -->
+    <script src="assets/script.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var disclaimer = document.getElementById('disclaimer');
+            if (disclaimer && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                disclaimer.style.display = 'block';
+            } else {
+                disclaimer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+body {
+    text-align: center;
+    padding: 50px;
+    font-family: Arial, sans-serif;
+}
+.container-404 {
+    max-width: 600px;
+    margin: auto;
+}
+.container-404 img {
+    max-width: 80%;
+    height: auto;
+}
+.container-404 h1 {
+    font-size: 40px;
+    color: #333;
+}
+.container-404 p {
+    font-size: 22px;
+    color: #666;
+}
+.container-404 a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

@@ -1,0 +1,195 @@
+/* Add your CSS styles here */
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 2px;
+}
+
+h4 {
+    color: #333;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* styles.css */
+
+/* Style the container for Markdown content */
+#markdownContent {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style headings */
+#markdownContent h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#markdownContent h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+#markdownContent h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+/* Style paragraphs */
+#markdownContent p {
+    margin-bottom: 12px;
+}
+
+/* Style lists */
+#markdownContent ul, #markdownContent ol {
+    margin-bottom: 12px;
+}
+
+#markdownContent li {
+    margin-left: 20px;
+}
+
+/* Style links */
+#markdownContent a {
+    color: #007bff;
+}
+
+#markdownContent a:hover {
+    text-decoration: underline;
+}
+
+/* Style code blocks */
+#markdownContent pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+#markdownContent code {
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+
+/* Style blockquotes */
+#markdownContent blockquote {
+    border-left: 4px solid #007bff;
+    margin: 0;
+    padding: 0 15px;
+    color: #666;
+}
+
+/* styles.css */
+
+/* Style the back button */
+#backButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#backButton:hover {
+    background-color: #0056b3;
+}
+
+/* Add margin to the Markdown content to avoid overlap with the back button */
+#markdownContent {
+    margin-bottom: 60px; /* Adjust this value as needed */
+}
+
+
+
+/* responsive */
+/* Style for the disclaimer */
+.disclaimer {
+    /* display: none; */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    z-index: 1; /* Ensure it's above other content */
+}
+
+/* Responsive layout */
+@media only screen and (max-width: 600px) {
+    .disclaimer {
+        font-size: 12px;
+    }
+}
+
+
+/* Style for the vulnerability list */
+#categoryList {
+    padding: 0;
+    list-style: none;
+}
+
+#categoryList h1 {
+    font-size: 24px;
+}
+
+#categoryList li {
+    margin-bottom: 10px;
+}
+
+/* Style for markdown content */
+#markdownContent {
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Responsive layout */
+@media only screen and (max-width: 600px) {
+    .disclaimer {
+        font-size: 12px;
+    }
+
+    #categoryList h1 {
+        font-size: 20px;
+    }
+
+    #markdownContent {
+        font-size: 14px;
+    }
+}

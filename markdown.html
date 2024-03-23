@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerabilities</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBGS903MB5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CBGS903MB5');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+
+
+</head>
+
+<body>
+    <!-- <ul id="categoryList"> -->
+        <!-- Disclaimer -->
+     <div class="disclaimer">
+        Data taken from <a href="https://github.com/bugcrowd/templates" target="_blank" rel="noopener noreferrer">https://github.com/bugcrowd/templates</a>
+    </div>
+
+    <!-- Markdown content section -->
+    <div id="markdownContent">
+        <!-- Markdown content will be rendered here -->
+    </div>
+
+    <!-- Back button -->
+    <!-- <button id="backButton">Back</button> -->
+   <!-- Disclaimer -->
+   <br>
+   <br>
+   <div class="disclaimer">
+    Data taken from <a href="https://github.com/bugcrowd/templates" target="_blank" rel="noopener noreferrer">https://github.com/bugcrowd/templates</a>
+</div>
+    <!-- Include script.js -->
+    <script src="assets/script.js"></script>
+    <script>
+        // Retrieve vulnerability data from local storage
+        const vulnerabilityList = JSON.parse(localStorage.getItem('vulnerabilityNames'));
+
+        // Fetch and render markdown content
+        fetchMarkdownContent(vulnerabilityList);
+
+    </script>
+</body>
+
+</html>
