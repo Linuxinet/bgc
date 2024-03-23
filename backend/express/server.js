@@ -2,12 +2,13 @@ const express = require('express');
 const fs = require('fs');
 const axios = require('axios');
 const cors = require('cors');
+const serverless = require('serverless-http');
 const path = require('path');
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
+const router = express.Router()
 // Define the base URL of your GitHub repository
 const GITHUB_REPO_URL = 'https://raw.githubusercontent.com/bugcrowd/templates/master/submissions/description/';
 
@@ -17,8 +18,21 @@ app.use(cors());
 // Load data.json file
 const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 
+// Serve the aliases.json file
+router.get('/aliases', (req, res) => {
+    res.sendFile(path.join(__dirname, '../aliases.json'));
+});
+
+
+router.get('/', (req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<h1>Hello from Express.js!</h1>');
+    res.end();
+  });
+
+
 // Define endpoint to fetch markdown content
-app.get('/api/markdown/:category/:subcategory/:variant?', async (req, res) => {
+router.get('/markdown/:category/:subcategory/:variant?', async (req, res) => {
     const { category, subcategory, variant } = req.params;
 
     try {
@@ -44,7 +58,7 @@ app.get('/api/markdown/:category/:subcategory/:variant?', async (req, res) => {
 
 
 // Define endpoint to fetch categories hierarchy
-app.get('/api/categories', (req, res) => {
+router.get('/categories', (req, res) => {
     try {
         const categories = getCategoriesHierarchy(data.content);
         res.json({ categories });
@@ -118,16 +132,9 @@ function findEntryById(id, entries) {
 }
 
 
-// Serve the aliases.json file
-app.get('/api/aliases', (req, res) => {
-    res.sendFile(path.join(__dirname, 'aliases.json'));
-});
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 
-
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-
+module.exports = app;
+module.exports.handler = serverless(app);
