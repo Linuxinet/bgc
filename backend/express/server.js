@@ -16,7 +16,7 @@ app.use(cors());
 
 
 // Load data.json file
-const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data.json')));
 
 // Serve the aliases.json file
 router.get('/aliases', (req, res) => {
