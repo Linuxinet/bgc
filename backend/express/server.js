@@ -16,11 +16,11 @@ app.use(cors());
 
 
 // Load data.json file
-const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data.json')));
+const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json')));
 
 // Serve the aliases.json file
 router.get('/aliases', (req, res) => {
-    res.sendFile(path.join(__dirname, '../aliases.json'));
+    res.sendFile(path.join(__dirname, 'aliases.json'));
 });
 
 
