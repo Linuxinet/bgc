@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Define the base URL of your GitHub repository
-const GITHUB_REPO_URL = 'https://raw.githubusercontent.com/Linuxinet/templates-bc/master/submissions/description/';
+const GITHUB_REPO_URL = 'https://raw.githubusercontent.com/bugcrowd/templates/master/submissions/description/';
 
 app.use(cors());
 
