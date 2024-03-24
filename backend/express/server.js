@@ -4,6 +4,7 @@ const axios = require('axios');
 const cors = require('cors');
 const serverless = require('serverless-http');
 const path = require('path');
+const fetch = require('node-fetch');
 const bodyParser = require('body-parser')
 
 
@@ -34,27 +35,33 @@ router.get('/', (req, res) => {
   });
 
 
-// Define endpoint to fetch markdown content
-router.get('/markdown/:category/:subcategory/:variant?', async (req, res) => {
+  router.get('/markdown/:category?/:subcategory?/:variant?', async (req, res) => {
     const { category, subcategory, variant } = req.params;
 
     try {
-        // Find the entry in data.json with the matching ids
+        // Placeholder function findMarkdownUrl
         const markdownUrl = findMarkdownUrl(category, subcategory, variant, data);
+        console.log('Markdown url:', markdownUrl);
+
         if (!markdownUrl) {
             return res.status(404).json({ error: 'Markdown content not found' });
         }
 
-        // Fetch the markdown content from the URL using axios
-        const response = await axios.get(markdownUrl);
-        if (!response.data) {
-            return res.status(404).json({ error: 'Markdown content not found' });
+        // Fetch the markdown content from the URL using node-fetch
+        const response = await fetch(markdownUrl);
+        
+        // Check if response is successful
+        if (!response.ok) {
+            return res.status(response.status).json({ error: 'Failed to fetch markdown content' });
         }
 
+        // Read response body as text
+        const responseData = await response.text();
+
         // Send the markdown content as the response
-        res.json({ content: response.data });
+        res.json({ content: responseData });
     } catch (error) {
-        console.error(error);
+        console.error('Error fetching markdown:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
@@ -70,6 +77,20 @@ router.get('/categories', (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+router.get('/test-server', async (req, res) => {
+    try {
+        const response = await fetch('https://example.com/');
+        const responseData = await response.json(); // Parse response body as JSON
+        console.log('Response status:', response.status);
+        res.json({ status: response.status, data: responseData });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 // Helper function to recursively build categories hierarchy
 function getCategoriesHierarchy(entries) {
@@ -107,7 +128,7 @@ function findMarkdownUrl(category, subcategory, variant, data) {
 
     url += 'template.md';
 
-    // console.log(url);
+    console.log(url);
 
     return url;
 }
