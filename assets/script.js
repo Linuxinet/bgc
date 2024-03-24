@@ -65,7 +65,7 @@ function appendCategoryToElement(categoryInfo, parentId, subcategoryId, variantI
 let aliasesData = null;
 
 // Fetch the aliases data from the server
-fetch('http://localhost:8888/.netlify/functions/server/aliases')
+fetch('https://bgc-server-backend.netlify.app/.netlify/functions/server/aliases')
   .then(response => response.json())
   .then(data => {
     // Store the aliases data globally
@@ -74,7 +74,7 @@ fetch('http://localhost:8888/.netlify/functions/server/aliases')
       console.error('Aliases data not available.');
       return;
     } else {
-      console.log('Aliases  :', aliasesData);
+      console.log('Aliases data available');
 
     }
 
@@ -89,7 +89,7 @@ async function fetchMarkdownContent(vulnerabilityNames) {
   if (!aliasesData) {
     try {
       // Fetch the aliases data from the server
-      const response = await fetch('http://localhost:8888/.netlify/functions/server/aliases');
+      const response = await fetch('https://bgc-server-backend.netlify.app/.netlify/functions/server/aliases');
       if (!response.ok) {
         throw new Error('Failed to fetch aliases data');
       }
@@ -120,7 +120,7 @@ async function fetchMarkdownContent(vulnerabilityNames) {
     }
 
     // Construct the URL based on the IDs
-    const url = `http://localhost:8888/.netlify/functions/server/markdown/${ids.join('/')}`;
+    const url = `https://bgc-server-backend.netlify.app/.netlify/functions/server/markdown/${ids.join('/')}`;
 
     // Fetch the markdown content
     const response = await fetch(url);
@@ -134,7 +134,7 @@ async function fetchMarkdownContent(vulnerabilityNames) {
     } else {
       const data = await response.json();
       // Handle the markdown content as needed
-      console.log(data.content);
+      // console.log(data.content);
       renderMarkdownContent(data.content);
     }
 
@@ -205,7 +205,7 @@ function renderMarkdownContent(content) {
 
 
 // Fetch categories data from the server
-fetch('http://localhost:8888/.netlify/functions/server/categories')
+fetch('https://bgc-server-backend.netlify.app/.netlify/functions/server/categories')
   .then(response => response.json())
   .then(data => {
     // Function to collect all categories in an array
